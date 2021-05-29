@@ -29,8 +29,9 @@ span {
 <p>
 This tool generates a .bin file from any image.
 <br>
-For now only RGB448.
+For now only RGBA4444.
 <br>
+Original code from<a href="http://xem.github.io/3DShomebrew/tools/image-to-bin.html">here</a>.
 </p>
 
 <br>
@@ -91,9 +92,9 @@ f.onchange=load.onclick=rotate.onchange=alpha.onchange=function(){
       b='';
       for(i=0;i<d.length;i+=4){
         if(alpha.checked){
-          b+=String.fromCharCode(d[i+3]);
+          b+=String.fromCharCode((d[i+3])/16);
         }
-        b+=String.fromCharCode((d[i])/16, (d[i+1])/16, d[i+2]);
+        b+=String.fromCharCode((d[i])/16, (d[i+1])/16, (d[i+2])/16);
       }
       a.href="data:application/octet-stream;base64,"+btoa(b);
     }
