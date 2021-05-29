@@ -90,11 +90,11 @@ f.onchange=load.onclick=rotate.onchange=alpha.onchange=function(){
       }
       d=x.getImageData(0,0,W,H).data;
       b='';
-      for(i=1;i<d.length;i+=4){
-        if(alpha.checked){
+      for(i=0;i<d.length;i+=4){
+        b+=String.fromCharCode(((d[i])+1)/16 - 1, ((d[i+1]) + 1)/16 - 1, ((d[i+2]) + 1)/16 - 1);
+		if(alpha.checked){
           b+=String.fromCharCode(((d[i+3]) + 1)/16 - 1);
         }
-        b+=String.fromCharCode(((d[i])+1)/16 - 1, ((d[i+1]) + 1)/16 - 1, ((d[i+2]) + 1)/16 - 1);
       }
       a.href="data:application/octet-stream;base64,"+btoa(b);
     }
