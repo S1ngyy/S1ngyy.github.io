@@ -1,0 +1,102 @@
+<!doctype html>
+<meta charset="utf-8">
+
+
+<style>
+body { 
+  width: 780px;
+  margin: 0 auto;
+  font-family: arial;
+}
+p {
+  background: #edf;
+  padding: 30px;
+  line-height: 25px;
+}
+canvas {
+  background: #000;
+  float: right;
+}
+span {
+  font-size: 12px
+}
+</style>
+
+<body>
+
+<h1>Image to BIN converter</h1>
+
+<p>
+This tool generates a .bin file from any image.
+<br>
+For now only RGB448.
+<br>
+</p>
+
+<br>
+
+<canvas id="c" width="0" height="0"></canvas>
+
+<b>1) Choose an image file:</b>
+<br>
+<br>
+(.bmp, .png, .jpg or .gif)
+<br>
+<br>
+<input type="file" id="f"> <button id="load">Load</button>
+
+<br>
+<br>
+
+
+<br>
+<br>
+
+<b>2) Check your options:</b>
+<br>
+<br>
+<input type="checkbox" id="rotate" checked> rotate 90° - <input type="checkbox" id="alpha"> preserve transparency
+
+<br>
+<br>
+<br>
+<br>
+
+<b>3) <a id=a download="image.bin">Download your BIN file</a></b>
+
+<br>
+<br>
+
+<script>
+f.onchange=load.onclick=rotate.onchange=alpha.onchange=function(){
+  with(new FileReader){
+    readAsDataURL(f.files[0]);
+    onload=function(){
+      z=new Image;
+      z.src=result;
+      W=c.width=rotate.checked?z.height:z.width;
+      H=c.height=rotate.checked?z.width:z.height;
+      x=c.getContext("2d");
+      if(rotate.checked){
+        x.save();
+        x.translate(c.width/2,c.height/2);
+        x.rotate(90*Math.PI/180);
+        x.drawImage(z,-z.width/2,-z.height/2);
+        x.restore();
+      }
+      else{
+        x.drawImage(z,0,0);
+      }
+      d=x.getImageData(0,0,W,H).data;
+      b='';
+      for(i=0;i<d.length;i+=4){
+        if(alpha.checked){
+          b+=String.fromCharCode(d[i+3]);
+        }
+        b+=String.fromCharCode(d[i+2], d[i+1], d[i]);
+      }
+      a.href="data:application/octet-stream;base64,"+btoa(b);
+    }
+  }
+}
+</script>
