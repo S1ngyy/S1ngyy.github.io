@@ -88,7 +88,7 @@ f.onchange=load.onclick=rotate.onchange=alpha.onchange=function(){
       else{
         x.drawImage(z,0,0);
       }
-      d=x.getImageData(0,0,W,H).data;
+      d=x.getImageData(0,0,W,H);
       b='';
       for(i=0;i<d.length;i+=4){
         if(alpha.checked){
