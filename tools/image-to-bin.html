@@ -93,7 +93,7 @@ f.onchange=load.onclick=rotate.onchange=alpha.onchange=function(){
         if(alpha.checked){
           b+=String.fromCharCode(d[i+3]);
         }
-        b+=String.fromCharCode((d[i])/2, (d[i+1])/2, d[i+2]);
+        b+=String.fromCharCode((d[i])/16, (d[i+1])/16, d[i+2]);
       }
       a.href="data:application/octet-stream;base64,"+btoa(b);
     }
