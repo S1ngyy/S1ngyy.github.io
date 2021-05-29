@@ -55,7 +55,7 @@ For now only RGB448.
 <b>2) Check your options:</b>
 <br>
 <br>
-<input type="checkbox" id="rotate" checked> rotate 90° - <input type="checkbox" id="alpha"> preserve transparency
+<input type="checkbox" id="rotate"> rotate 90° - <input type="checkbox" id="alpha"> preserve transparency
 
 <br>
 <br>
@@ -93,7 +93,7 @@ f.onchange=load.onclick=rotate.onchange=alpha.onchange=function(){
         if(alpha.checked){
           b+=String.fromCharCode(d[i+3]);
         }
-        b+=String.fromCharCode(d[i+2], d[i+1], d[i]);
+        b+=String.fromCharCode((d[i])/2, (d[i+1])/2, d[i+2]);
       }
       a.href="data:application/octet-stream;base64,"+btoa(b);
     }
