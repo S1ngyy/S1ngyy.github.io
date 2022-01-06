@@ -45,14 +45,18 @@ If you are already on 3.600.011 skip to step 3.
 <b>2) Update via content downloader:</b>
 <br>
 <br>
-Download firmware 3.600.011 for YOUR EXACT DEVICE TYPE from <a href="https://darthsternie.net/ps-vita-dev-firmwares/"> here</a>.
+a) Download firmware 3.600.011 for YOUR EXACT DEVICE TYPE from <a href="https://darthsternie.net/ps-vita-dev-firmwares/"> here</a>.
 Make sure you downloaded the correct one and you also didnt accidentally download the "decrypted" version.
-Download <a href="https://www.rejetto.com/hfs/"> http file server</a> and install it. Make sure to set the port to something else than 22.
-Drag the downloaded file into the main file serving directory in the hfs interface.
-Open the Settings App on your kit and navigate to Debug Settings > Content Downloader.
-Enter the ip address and port shown in the interface of hfs into the URL bar using the Syntax "http://ipAddress:port" so it should look something like "http://192.168.1.123:69"
-Confirm and then select the .PUP file shown on your vita.
-Wait for it to download and then update to 3.600.011.
+<br>
+b) Download <a href="https://www.rejetto.com/hfs/"> http file server</a> and install it. Make sure to set the port to something else than 22.
+<br>
+c) Drag the downloaded file into the main file serving directory in the hfs interface.
+<br>
+d) Open the Settings App on your kit and navigate to Debug Settings > Content Downloader.
+<br>
+e) Enter the ip address and port shown in the interface of hfs into the URL bar using the Syntax "http://ipAddress:port" so it should look something like "http://192.168.1.123:69"
+<br>
+f) Confirm and then select the .PUP file shown on your vita. Wait for it to download and then update to 3.600.011.
 <br>
 <br>
 
@@ -60,34 +64,43 @@ Wait for it to download and then update to 3.600.011.
 <b>3) Running Henkaku and preperations:</b>
 <br>
 <br>
-Download <a href="https://github.com/SKGleba/enso_ex/releases/"> enso_ex</a>, <a href="https://github.com/TheOfficialFloW/VitaShell/releases"> Vitashell</a> and <a href="https://bitbucket.org/SilicaAndPina/activate.vpk/src/master/"> Activate.vpk</a>
-On your vita open the browser app and navigate to http://henkaku.xyz/go
+a) Download <a href="https://github.com/SKGleba/enso_ex/releases/"> enso_ex</a>, <a href="https://github.com/TheOfficialFloW/VitaShell/releases"> Vitashell</a> and <a href="https://bitbucket.org/SilicaAndPina/activate.vpk/src/master/"> Activate.vpk</a>
+<br>
+b) On your vita open the browser app and navigate to http://henkaku.xyz/go
 This should install Henkaku and Molecular Shell on your device.
 If it just gets stuck in the browser for over a minute close the browser and try again and if that does not help try rebooting the console.
-Once you have Molecular Shell availeable go to the Settings App. You will find a new entry called "Henkaku Settings". Under there enable "Unsafe Homebrew".
-Then start Molecular Shell and press the select buttonm to start the FTP server.
+<br>
+c) Once you have Molecular Shell availeable go to the Settings App. You will find a new entry called "Henkaku Settings". Under there enable "Unsafe Homebrew".
+<br>
+d) Then start Molecular Shell and press the select buttonm to start the FTP server.
 On your PC connect to it using the Address and Port shown on the vita with any ftp client like <a href="https://winscp.net/eng/download.php"> WinSCP</a>.
-Create a new folder called "vpk" under ux0: and transfer the three .vpk files you downloaded there (the new folder is not nescessary but good for clenliness) and also delete the "tai" tai folder inside ux0.
-Install them by navigating to the vpk folder and using the x-Button within Molecle Shell.
+<br>
+e) Create a new folder called "vpk" under ux0: and transfer the three .vpk files you downloaded there (the new folder is not nescessary but good for clenliness) and also delete the "tai" tai folder inside ux0.
+<br>
+f) Install them by navigating to the vpk folder and using the x-Button within Molecle Shell.
 Close Molecule Shell and uninstall it from the Livearea by keeping your finger held on the bubble until the context menu opens.
-Open the new Vitashell application that has now appered.
+<br>
+g) Open the new Vitashell application that has now appered.
 Navigate to "ux0:app/MLCL00003/ there and open the eboot.bin file with Vitashell. Press triangle and select edit in Hex.
 on the left side you will see ascending Numbers in tens which represent the Offset of the edited bytes within the binary. In the line starting at offset 80 you will find a "01" in the beginning and a "2F" a little later.
 Change the "01" to a "00" and the "2F" to a "28" then close out with the circle button, saving when prompted (Why this is needed to be done I will explain in Addendum 1).
-Lastly navigate all the way back to the partition overview (where e.g. ux0, ur0 and pd0 can be found), press start and change "select button behaviour" to FTP finally close Vitashell.
+<br>
+h) Lastly navigate all the way back to the partition overview (where e.g. ux0, ur0 and pd0 can be found), press start and change "select button behaviour" to FTP finally close Vitashell.
 <br>
 <br>
 
 <b>4) Installing enso_ex and attempting to activate the kit:</b>
 <br>
 <br>
-Run the enso_ex app now availeable in the lvie area.
+a) Run the enso_ex app now availeable in the live area.
 Accept all the disclaimers and click install the hack.
 If everything went right your console will reboot with enso_ex, the permanent hack installed.
-Now run the Activate.vpk app. When it asks for backup agree.
+<br>
+b) Now run the Activate.vpk app. When it asks for backup agree.
 If everything succeds your console will reboot and the watermark should now be gone. On devkit the Communication-Processor-Indicator-LED might continuously flash yellow while you are on a black screen.
 This is caused by the Communication-Processor getting confused. In this case just unplug and replug the power.
-If the app gave you an error message along the lines of "file not found" check Addendum 2.
+<br>
+c) If the app gave you an error message along the lines of "file not found" check Addendum 2.
 If everything  succeeded you now have an activated and hacked PS Vita Dev-/Testkit.
 Make sure to read Addendum 1 to become clear of the Kaveats this will bring with it.
 <br>
