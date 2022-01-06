@@ -1,2 +1,3 @@
-<h1>Various online tools</h1>
-<b href="https://s1ngyy.github.io/tools/DEXTOOLguide.html">PS Vita Dev-/Testkit Hacking Guide</b>
+<b>Various online tools</b>
+<br>
+[PS Vita Dev-/Testkit hacking guide](https://s1ngyy.github.io/tools/DEXTOOLguide.html)
