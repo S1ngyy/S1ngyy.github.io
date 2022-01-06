@@ -27,7 +27,8 @@ span {
 <h1>PS Vita Dev-/Testkit hacking guide</h1>
 
 <p>
-This is hacking guide for both Dev- and Testkits
+This is hacking guide for both Dev- and Testkits<br>
+If any issues occur feel free to contact me on discord at S1ngyy#4558 or on the Henkaku server
 </p>
 
 <br>
@@ -36,7 +37,7 @@ This is hacking guide for both Dev- and Testkits
 <b>1) Check your current firmware:</b>
 <br>
 <br>
-If you can not find the firmware of your Console in the list found <a href="https://darthsternie.net/ps-vita-dev-firmwares/"> here</a> stop following the guide and contact me on discord (S1ngyy#4558 or on the Henkaku server) immediately.
+If you can not find the firmware of your Console in the list found <a href="https://darthsternie.net/ps-vita-dev-firmwares/"> here</a> stop following the guide and contact me immediately.
 <br>
 If you are already on 3.600.011 skip to step 3.
 <br>
@@ -45,64 +46,65 @@ If you are already on 3.600.011 skip to step 3.
 <b>2) Update via content downloader:</b>
 <br>
 <br>
-a) Download firmware 3.600.011 for YOUR EXACT DEVICE TYPE from <a href="https://darthsternie.net/ps-vita-dev-firmwares/"> here</a>.
+<b>a)</b> Download firmware 3.600.011 for YOUR EXACT DEVICE TYPE from <a href="https://darthsternie.net/ps-vita-dev-firmwares/"> here</a>.
 Make sure you downloaded the correct one and you also didnt accidentally download the "decrypted" version.
 <br>
-b) Download <a href="https://www.rejetto.com/hfs/"> http file server</a> and install it. Make sure to set the port to something else than 22.
+<b>b)</b> Download <a href="https://www.rejetto.com/hfs/"> http file server</a> and install it. Make sure to set the port to something other than 22.
 <br>
-c) Drag the downloaded file into the main file serving directory in the hfs interface.
+<b>c)</b> Drag the downloaded file into the main file serving directory in the hfs interface.
 <br>
-d) Open the Settings App on your kit and navigate to Debug Settings > Content Downloader.
+<b>d)</b> Open the Settings App on your kit and navigate to Debug Settings > Content Downloader.
 <br>
-e) Enter the ip address and port shown in the interface of hfs into the URL bar using the Syntax "http://ipAddress:port" so it should look something like "http://192.168.1.123:69"
+<b>e)</b> Enter the ip address and port shown in the interface of hfs into the URL bar using the Syntax "http://ipAddress:port" so it should look something like "http://192.168.1.123:69"
 <br>
-f) Confirm and then select the .PUP file shown on your vita. Wait for it to download and then update to 3.600.011.
+<b>f)</b> Confirm and then select the .PUP file shown on your vita. Wait for it to download and then update to 3.600.011.
 <br>
 <br>
 
 
-<b>3) Running Henkaku and preperations:</b>
+<b>3) Running Henkaku and preparations:</b>
 <br>
 <br>
-a) Download <a href="https://github.com/SKGleba/enso_ex/releases/"> enso_ex</a>, <a href="https://github.com/TheOfficialFloW/VitaShell/releases"> Vitashell</a> and <a href="https://bitbucket.org/SilicaAndPina/activate.vpk/src/master/"> Activate.vpk</a>
+<b>a)</b> Download <a href="https://github.com/SKGleba/enso_ex/releases/"> enso_ex</a>, <a href="https://github.com/TheOfficialFloW/VitaShell/releases"> Vitashell</a> and <a href="https://bitbucket.org/SilicaAndPina/activate.vpk/src/master/"> Activate.vpk</a>
 <br>
-b) On your vita open the browser app and navigate to http://henkaku.xyz/go
+<b>b)</b> On your vita open the browser app and navigate to http://henkaku.xyz/go
 This should install Henkaku and Molecular Shell on your device.
 If it just gets stuck in the browser for over a minute close the browser and try again and if that does not help try rebooting the console.
 <br>
-c) Once you have Molecular Shell availeable go to the Settings App. You will find a new entry called "Henkaku Settings". Under there enable "Unsafe Homebrew".
+<b>c)</b> Once you have Molecular Shell available go to the Settings App. You will find a new entry called "Henkaku Settings". Under there enable "Unsafe Homebrew".
 <br>
-d) Then start Molecular Shell and press the select buttonm to start the FTP server.
+<b>d)</b> Then start Molecular Shell and press the select buttonm to start the FTP server.
 On your PC connect to it using the Address and Port shown on the vita with any ftp client like <a href="https://winscp.net/eng/download.php"> WinSCP</a>.
 <br>
-e) Create a new folder called "vpk" under ux0: and transfer the three .vpk files you downloaded there (the new folder is not nescessary but good for clenliness) and also delete the "tai" tai folder inside ux0.
+<b>e)</b> Create a new folder called "vpk" under ux0: and transfer the three .vpk files you downloaded there (the new folder is not necessary but good for cleanliness) and also delete the "tai" tai folder inside ux0.
 <br>
-f) Install them by navigating to the vpk folder and using the x-Button within Molecle Shell.
-Close Molecule Shell and uninstall it from the Livearea by keeping your finger held on the bubble until the context menu opens.
+<b>f)</b> Install them by navigating to the vpk folder and using the x-Button within Molecule Shell.
 <br>
-g) Open the new Vitashell application that has now appered.
+<b>g)</b>Close Molecule Shell and uninstall it from the Livearea by keeping your finger held on the bubble until the context menu opens.
+<br>
+<b>h)</b> Open the new Vitashell application that has now appeared.
 Navigate to "ux0:app/MLCL00003/ there and open the eboot.bin file with Vitashell. Press triangle and select edit in Hex.
 on the left side you will see ascending Numbers in tens which represent the Offset of the edited bytes within the binary. In the line starting at offset 80 you will find a "01" in the beginning and a "2F" a little later.
 Change the "01" to a "00" and the "2F" to a "28" then close out with the circle button, saving when prompted (Why this is needed to be done I will explain in Addendum 1).
 <br>
-h) Lastly navigate all the way back to the partition overview (where e.g. ux0, ur0 and pd0 can be found), press start and change "select button behaviour" to FTP finally close Vitashell.
+<b>h)</b> Lastly navigate all the way back to the partition overview (where e.g. ux0, ur0 and pd0 can be found) press start and change "select button behaviour" to FTP finally close Vitashell.
 <br>
 <br>
 
 <b>4) Installing enso_ex and attempting to activate the kit:</b>
 <br>
 <br>
-a) Run the enso_ex app now availeable in the live area.
+<b>a)</b> Run the enso_ex app now available in the live area.
 Accept all the disclaimers and click install the hack.
 If everything went right your console will reboot with enso_ex, the permanent hack installed.
 <br>
-b) Now run the Activate.vpk app. When it asks for backup agree.
-If everything succeds your console will reboot and the watermark should now be gone. On devkit the Communication-Processor-Indicator-LED might continuously flash yellow while you are on a black screen.
+<b>b)</b> Now run the Activate.vpk app. When it asks for backup agree.
+If everything succeeds your console will reboot and the watermark should now be gone. On devkit the Communication-Processor-Indicator-LED might continuously flash yellow while you are on a black screen.
 This is caused by the Communication-Processor getting confused. In this case just unplug and replug the power.
 <br>
-c) If the app gave you an error message along the lines of "file not found" check Addendum 2.
+<b>c)</b> If the app gave you an error message along the lines of "file not found" check Addendum 2.
 If everything  succeeded you now have an activated and hacked PS Vita Dev-/Testkit.
-Make sure to read Addendum 1 to become clear of the Kaveats this will bring with it.
+Make sure to read Addendum 1 to get yourself accustomed to the Caveats this will bring.
 <br>
 <br>
 <br>
@@ -112,9 +114,9 @@ Make sure to read Addendum 1 to become clear of the Kaveats this will bring with
 <br>
 Currently there is a bug in Henkaku which results in wrong permissions being applied to Homebrew applications on kits.
 This is caused by Henkaku's own permission system. Henkaku uses something called "fself-authid" (found at offset 80 of the app's binary) to identify if an app requests either "safe" or "unsafe" permissions.
-This fself-authid can be set at compiletime by the developer of said Homebrew application to either one of the afformentiuoned or a custom one. Henkaku then reads it and applies either requested permissions or the authid itself (if a custom one has been set).
+This fself-authid can be set at compile time by the developer of said Homebrew application to either one of the aformentioned or a custom one. Henkaku then reads it and applies either requested permissions or the authid itself (if a custom one has been set).
 Due to kits having changes to how applications are given permissions Henkaku will always leave an app with "safe" permissions even when "unsafe" ones were requested by the fself-authid.
-Hence you will be forced to manually hexedit it to a custom one which doesnt match the ones checked explicitely by Henkaku for apps that need unsafe permissions that work.
+Hence, you will be forced to manually hexedit it to a custom one which does not match the ones checked explicitly by Henkaku for apps that need unsafe permissions that work.
 <br>
 <br>
 <h2>Addendum 2:</h2>
