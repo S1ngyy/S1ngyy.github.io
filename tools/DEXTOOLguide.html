@@ -1,0 +1,113 @@
+<!doctype html>
+<meta charset="utf-8">
+
+
+<style>
+body { 
+  width: 780px;
+  margin: 0 auto;
+  font-family: arial;
+}
+p {
+  background: #edf;
+  padding: 30px;
+  line-height: 25px;
+}
+canvas {
+  background: #000;
+  float: right;
+}
+span {
+  font-size: 12px
+}
+</style>
+
+<body>
+
+<h1>PS Vita Dev-/Testkit hacking guide</h1>
+
+<p>
+This is hacking guide for both Dev- and Testkits
+</p>
+
+<br>
+
+<h2> The hacking process:</h2>
+<br>
+<br>
+
+<b>1) Check your current firmware:</b>
+<br>
+<br>
+If you can not find the firmware of your Console in the list found <a href="https://darthsternie.net/ps-vita-dev-firmwares/"> here</a> stop following the guide and contact me on discord immediately.
+<br>
+If you are already on 3.600.011 skip to step 3.
+<br>
+<br>
+
+<b>2) Update via content downloader:</b>
+<br>
+<br>
+Download firmware 3.600.011 for YOUR EXACT DEVICE TYPE from <a href="https://darthsternie.net/ps-vita-dev-firmwares/"> here</a>.
+Make sure you downloaded the correct one and you also didnt accidentally download the "decrypted" version.
+Download <a href="https://www.rejetto.com/hfs/"> http file server</a> and install it. Make sure to set the port to something else than 22.
+Drag the downloaded file into the main file serving directory in the hfs interface.
+Open the Settings App on your kit and navigate to Debug Settings > Content Downloader.
+Enter the ip address and port shown in the interface of hfs into the URL bar using the Syntax "http://ipAddress:port" so it should look something like "http://192.168.1.123:69"
+Confirm and then select the .PUP file shown on your vita.
+Wait for it to download and then update to 3.600.011.
+<br>
+<br>
+
+
+<b>3) Running Henkaku and preperations:</b>
+<br>
+<br>
+Download <a href="https://github.com/SKGleba/enso_ex/releases/"> enso_ex</a>, <a href="https://github.com/TheOfficialFloW/VitaShell/releases"> Vitashell</a> and <a href="https://bitbucket.org/SilicaAndPina/activate.vpk/src/master/"> Activate.vpk</a>
+On your vita open the browser app and navigate to http://henkaku.xyz/go
+This should install Henkaku and Molecular Shell on your device.
+If it just gets stuck in the browser for over a minute close the browser and try again and if that does not help try rebooting the console.
+Once you have Molecular Shell availeable go to the Settings App. You will find a new entry called "Henkaku Settings". Under there enable "Unsafe Homebrew".
+Then start Molecular Shell and press the select buttonm to start the FTP server.
+On your PC connect to it using the Address and Port shown on the vita with any ftp client like <a href="https://winscp.net/eng/download.php"> WinSCP</a>.
+Create a new folder called "vpk" under ux0: and transfer the three .vpk files you downloaded there (the new folder is not nescessary but good for clenliness) and also delete the "tai" tai folder inside ux0.
+Install them by navigating to the vpk folder and using the x-Button within Molecle Shell.
+Close Molecule Shell and uninstall it from the Livearea by keeping your finger held on the bubble until the context menu opens.
+Open the new Vitashell application that has now appered.
+Navigate to "ux0:app/MLCL00003/ there and open the eboot.bin file with Vitashell. Press triangle and select edit in Hex.
+on the left side you will see ascending Numbers in tens which represent the Offset of the edited bytes within the binary. In the line starting at offset 80 you will find a "01" in the beginning and a "2F" a little later.
+Change the "01" to a "00" and the "2F" to a "28" then close out with the circle button, saving when prompted (Why this is needed to be done I will explain in Addendum 1).
+Lastly navigate all the way back to the partition overview (where e.g. ux0, ur0 and pd0 can be found), press start and change "select button behaviour" to FTP finally close Vitashell.
+<br>
+<br>
+
+<b>4) Installing enso_ex and attempting to activate the kit:</b>
+<br>
+<br>
+Run the enso_ex app now availeable in the lvie area.
+Accept all the disclaimers and click install the hack.
+If everything went right your console will reboot with enso_ex, the permanent hack installed.
+Now run the Activate.vpk app. When it asks for backup agree.
+If everything succeds your console will reboot and the watermark should now be gone. On devkit the Communication-Processor-Indicator-LED might continuously flash yellow while you are on a black screen.
+This is caused by the Communication-Processor getting confused. In this case just unplug and replug the power.
+If the app gave you an error message along the lines of "file not found" check Addendum 2.
+If everything  succeeded you now have an activated and hacked PS Vita Dev-/Testkit.
+Make sure to read Addendum 1 to become clear of the Kaveats this will bring with it.
+<br>
+<br>
+<br>
+<h2>Addendum 1:</h2>
+<b>Why do i have to hexedit apps?</b>
+<br>
+<br>
+Currently there is a bug in Henkaku which results in wrong permissions being applied to Homebrew applications on kits.
+This is caused by Henkaku's own permission system. Henkaku uses something called "fself-authid" (found at offset 80 of the app's binary) to identify if an app requests either "safe" or "unsafe" permissions.
+This fself-authid can be set at compiletime by the developer of said Homebrew application to either one of the afformentiuoned or a custom one. Henkaku then reads it and applies either requested permissions or the authid itself (if a custom one has been set).
+Due to kits having changes to how applications are given permissions Henkaku will always leave an app with "safe" permissions even when "unsafe" ones were requested by the fself-authid.
+Hence you will be forced to manually hexedit it to a custom one which doesnt match the ones checked explicitely by Henkaku for apps that need unsafe permissions that work.
+<br>
+<br>
+<h2>Addendum 2:</h2>
+<b>TBD. Message me on discord.</b>
+<br>
+<br>
